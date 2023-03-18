@@ -1,4 +1,4 @@
-import os, random
+import os, random, time
 
 MIN = 1
 MAX = 10
@@ -62,6 +62,7 @@ def check_results(magic_number, player_guess, tries):
 
         if CREDITS < 0:
             print("You lost all your credits :(")
+            time.sleep(5)
             exit_game()
 
 
