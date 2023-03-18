@@ -2,6 +2,7 @@ import os, random
 
 MIN = 1
 MAX = 10
+CREDITS = 10
 
 def main():
     clear_screen()
@@ -26,6 +27,8 @@ def game_loop():
 
     tries = 3
     print(f"You have {tries} tries.")
+    print(f"You have {CREDITS} credits to play.")
+    print("Do your best and win more!")
 
     # ask player guess
     player_guess = get_player_guess()
@@ -42,13 +45,25 @@ def game_loop():
         print(f"Wrong guess. You have {tries} tries left. Try again!")
         player_guess = get_player_guess()
     
-    check_results(magic_number, player_guess)
+    check_results(magic_number, player_guess, tries)
 
-def check_results(magic_number, player_guess):
+def check_results(magic_number, player_guess, tries):
+    global CREDITS
+    reward = 10
+
     if player_guess == magic_number:
         print(f"You win! {magic_number} was my number! :)))")
-    else: 
+        print(f"You won {reward} credits!")
+        CREDITS += reward
+    else:
         print(f"My number was {magic_number}.")
+        print(f"You lost {reward} credits")
+        CREDITS -= reward
+
+        if CREDITS < 0:
+            print("You lost all your credits :(")
+            exit_game()
+
 
     ask_play_again()
 
@@ -58,11 +73,15 @@ def ask_play_again():
         clear_screen()
         game_loop()
     else:
-        clear_screen()
-        print("Maybe next time. Good bye!")
-        exit()
-    
+        exit_game()
+
+def exit_game():
+    clear_screen()
+    print("Maybe next time. Good bye!")
+    exit()
+
 def get_player_guess():
+    print("-"*50)
     player_input = input("Your Guess?")
     
     try:
