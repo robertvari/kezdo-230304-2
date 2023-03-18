@@ -1,4 +1,9 @@
-def add_numbers(a, b):
+def add_numbers(a: int, b: int) -> int:
+    """
+    Adds two numbers and returns their result.
+    a: int
+    b: int
+    """
     return a+b
 
 def multiply_numbers(a, b):
