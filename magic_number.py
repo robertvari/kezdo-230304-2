@@ -44,14 +44,24 @@ def game_loop():
     
     check_results(magic_number, player_guess)
 
-
 def check_results(magic_number, player_guess):
     if player_guess == magic_number:
         print(f"You win! {magic_number} was my number! :)))")
     else: 
         print(f"My number was {magic_number}.")
-        print("Game over :((")
 
+    ask_play_again()
+
+def ask_play_again():
+    player_choice = input("Do you want to play again? (y/n)")
+    if player_choice == "y":
+        clear_screen()
+        game_loop()
+    else:
+        clear_screen()
+        print("Maybe next time. Good bye!")
+        exit()
+    
 def get_player_guess():
     player_input = input("Your Guess?")
     
