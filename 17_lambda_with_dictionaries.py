@@ -7,3 +7,15 @@ movie_list = {
     6: {"name": "Avatar", "rating": 76},
     7: {"name": "The Woman King", "rating": 79}
 }
+
+def get_rating(movie_id):
+    return movie_list[movie_id]["rating"]
+
+result_1 = sorted(movie_list, key=get_rating, reverse=True)
+for id in result_1:
+    print(movie_list[id])
+
+print("-"*50)
+result_2 = sorted(movie_list, key=lambda id: movie_list[id]["rating"], reverse=True)
+for id in result_2:
+    print(movie_list[id])
