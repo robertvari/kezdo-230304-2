@@ -8,10 +8,11 @@ def main():
     # get all image files
     images = get_images(folder)
 
-    # TODO collect data from images
+    # collect data from images
     photo_data = get_photo_data(images)
 
-    # TODO save image data
+    # save image data
+    save_data(photo_data)
 
 def get_folder() -> str:
     folder_path = r"D:\Work\_PythonSuli\kezdo-230304\photos\IMG_1070.JPG"
@@ -58,5 +59,12 @@ def get_photo_data(images) -> dict:
         }
 
     return photo_data_container
+
+def save_data(photo_data):
+    file_path = "photo_data.json"
+    with open(file_path, "w") as my_file:
+        json.dump(photo_data, my_file)
+
+    print(f"Data saved to: {file_path}")
 
 main()
