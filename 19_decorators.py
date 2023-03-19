@@ -1,5 +1,5 @@
 import time, random
-from my_python_library.decorators import my_timer
+from my_python_library.decorators import my_timer, check_temperature
 
 
 @my_timer
@@ -15,5 +15,7 @@ def say_hello(name, email, addres, phone):
     time.sleep(random.randint(1, 5))
     print(name, email, addres, phone)
 
-add_numbers(10, 300)
-say_hello("Robert", "robert@gmail.com", "budapest", "0620 1234 567")
+@check_temperature
+def set_temperature(a):
+    return a**a
+
